@@ -1,8 +1,10 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { AiOutlineClose } from 'react-icons/ai'
 
 export default function Section() {
+  const [selectedImg, setSelectedImg] = useState(null);
 
   const cards = [
     {
@@ -23,7 +25,7 @@ export default function Section() {
     {
       title: "Wildlife Photography",
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio et faucibus. Nulla rhoncus feugiat eros quis consectetur. Morbi neque ex, condimentum dapibus congue et, vulputate ut ligula. Vestibulum sit amet urna turpis.",
-      img: "/section4.png"
+      img: "/section3.png"
     },
   ];
 
@@ -56,12 +58,13 @@ export default function Section() {
           {cards.map((card, index) => (
             <motion.div
               key={index}
-              className={`bg-[url(${card.img})] relative bg-cover bg-center bg-no-repeat h-[600px] w-[576px]`}
+              className={`bg-[url(${card.img})] relative bg-cover bg-center bg-no-repeat h-[600px] w-[576px] cursor-pointer`}
               custom={index}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={cardVariants}
+              onClick={() => setSelectedImg(card.img)}
             >
               <div className='absolute bottom-[30px] ml-[30px]'>
                 <h2 className='font-normal text-[14px] leading-[20px] tracking-[2px] uppercase'>
@@ -79,6 +82,31 @@ export default function Section() {
           ))}
         </div>
       </div>
+
+      {/* Modal for full screen image */}
+      {selectedImg && (
+        <motion.div
+          className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <button
+            className="absolute top-5 right-5 text-white text-3xl z-50"
+            onClick={() => setSelectedImg(null)}
+          >
+            <AiOutlineClose />
+          </button>
+          <motion.img
+            src={selectedImg}
+            alt="full-screen"
+            className="max-h-[90vh] max-w-[90vw] object-contain"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+          />
+        </motion.div>
+      )}
     </div>
   )
 }
