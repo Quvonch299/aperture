@@ -6,25 +6,21 @@ export default function Section() {
 
   const cards = [
     {
-      type: "product",
       title: "Product Photography",
       text: "Cras commodo consequat orci, in convallis risus egestas non. Nulla efficitur auctor hendrerit. Etiam ut orci varius, faucibus libero ac, cursus quam.",
       img: "/sec1.png"
     },
     {
-      type: "architecture",
       title: "Architecture Photography",
       text: "Aenean porta neque eget consequat fringilla. Vestibulum ultrices, orci nec egestas pharetra, ligula est semper enim, nec auctor sapien leo nec purus. Fusce tincidunt aliquet sapien, sit amet rhoncus leo imperdiet nec.",
       img: "/sec2.png"
     },
     {
-      type: "drone",
       title: "Drone Photography",
       text: "Mauris euismod elit et nisi ultrices, ut faucibus orci tincidunt. Duis tristique sed lorem a vestibulum. Cras commodo consequat orci, in convallis risus egestas non. Nulla efficitur auctor hendrerit. Etiam ut orci varius, faucibus libero ac, cursus quam.",
       img: "/sec3.png"
     },
     {
-      type: "wildlife",
       title: "Wildlife Photography",
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque aliquam odio et faucibus. Nulla rhoncus feugiat eros quis consectetur. Morbi neque ex, condimentum dapibus congue et, vulputate ut ligula. Vestibulum sit amet urna turpis.",
       img: "/sec4.png"
@@ -74,14 +70,10 @@ export default function Section() {
                 <p className='w-[501px] font-normal text-[14px] leading-[20px] mt-[30px] tracking-normal'>
                   {card.text}
                 </p>
-                <motion.button
-                  onClick={() => window.open(`/readmore?type=${card.type}`, "_blank")}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex items-center mt-[39px] text-black justify-center gap-2 bg-white w-[143px] h-[42px] rounded-[14px] font-normal text-[15px] leading-[20px] tracking-[0.4px]"
-                >
+                <button className="flex items-center mt-[39px] text-black justify-center gap-2 bg-white w-[143px] h-[42px] rounded-[14px] font-normal text-[15px] leading-[20px] tracking-[0.4px]">
                   <span className="w-[32px] h-[32px] bg-black rounded-full"></span>
                   Read more
-                </motion.button>
+                </button>
               </div>
             </motion.div>
           ))}
