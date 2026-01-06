@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import ContactModal from "./ContactModal"  // Modalni import qilamiz
+import ContactModal from "../../components/home/ContactModal"  // Modalni import qilamiz
 
 const cardData = {
   product: {
